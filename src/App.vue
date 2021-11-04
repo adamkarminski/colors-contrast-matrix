@@ -5,10 +5,10 @@
 		</nav>
 		<div class="main">
 			<div class="main__data">
-				<label class="main__data__font__label" for="main__data__font">Font colors</label>
+				<label class="main__data__font__label" for="main__data__font">Fonts</label>
 				<textarea v-model="fonts" name="main__data__font" id="" cols="30" rows="10"> </textarea>
 
-				<label class="main__data__background__label" for="main__data__background">Background colors</label>
+				<label class="main__data__background__label" for="main__data__background">Backgrounds</label>
 				<textarea v-model="backgrounds" name="main__data__background" id="" cols="30" rows="10"> </textarea>
 
 				<button @click="renderColors">Rerender matrix</button>
@@ -44,7 +44,7 @@
 					const attributes = color.split(':');
 					return {
 						name: attributes[0].trim(),
-						value: attributes[1].trim(),
+						value: attributes[1].trim().replace(/\;/g, ''),
 					};
 				});
 			},
