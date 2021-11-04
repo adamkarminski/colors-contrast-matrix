@@ -1,7 +1,10 @@
 <template lang="">
 	<div class="matrix">
 		<div class="matrix__row">
-			<div class="matrix__cell">Backgrounds \ Fonts</div>
+			<div class="matrix__cell matrix__cell-title">
+				<div>Fonts →</div>
+				<div>↓ Backgrounds</div>
+			</div>
 			<div class="matrix__cell" v-for="font in colors.fonts">
 				<div>
 					<h4>{{ font.name }}</h4>
@@ -57,5 +60,17 @@
 		max-width: 300px;
 		margin: 10px;
 		text-align: center;
+	}
+
+	.matrix__cell-title {
+		align-items: stretch;
+		display: flex;
+	}
+
+	.matrix__cell-title div {
+		align-items: center;
+		display: flex;
+		justify-content: center;
+		flex: 1;
 	}
 </style>
