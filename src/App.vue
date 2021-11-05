@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<nav class="nav">
-			<h1>Colors matrix</h1>
+			<h1>Colors Contrast Matrix</h1>
 		</nav>
 		<div class="main">
 			<div class="main__data">
