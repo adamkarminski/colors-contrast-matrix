@@ -12,6 +12,24 @@
 				<textarea v-model="backgrounds" name="main__data__background" id="" cols="30" rows="10"> </textarea>
 
 				<button @click="renderColors">Rerender matrix</button>
+
+				<div role="footer" class="footer">
+					<p>
+						Created by <a href="https://github.com/adamkarminski" target="_blank">Adam Karmiński</a> from
+						<a href="https://bethink.tech" target="_blank">Bethink</a>
+					</p>
+					<p>
+						<a href="https://github.com/adamkarminski/colors-contrast-matrix" target="_blank">
+							<img
+								src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+								alt="GitHub's logo"
+								title="GitHub repo"
+								width="30"
+								height="30"
+							/>
+						</a>
+					</p>
+				</div>
 			</div>
 			<div class="main__render">
 				<ColorsMatrix :colors="colors" />
@@ -23,12 +41,16 @@
 <script>
 	import ColorsMatrix from './components/ColorsMatrix.vue';
 
+	const FONTS_DEFAULTS = `gray900: #1F2534\ngray800: #434A5A\ngray700: #6F7285\ngray600: #868C9E\ngray500: #A7ACBD\ngray400: #BDC1CD\ngray300: #CDD0DA\ngray200: #E6E8EE\ngray100: #EFF0F3\ngray50: #F6F6F8`;
+
+	const BACKGROUNDS_DEFAULTS = `gray900: #1F2534\ngray800: #434A5A\ngray700: #6F7285\ngray600: #868C9E\ngray500: #A7ACBD\ngray400: #BDC1CD\ngray300: #CDD0DA\ngray200: #E6E8EE\ngray100: #EFF0F3\ngray50: #F6F6F8`;
+
 	export default {
 		components: { ColorsMatrix },
 		data() {
 			return {
-				fonts: `gray900: #1F2534\ngray800: #434A5A\ngray700: #6F7285\ngray600: #868C9E\ngray500: #A7ACBD\ngray400: #BDC1CD\ngray300: #CDD0DA\ngray200: #E6E8EE\ngray100: #EFF0F3\ngray50: #F6F6F8`,
-				backgrounds: `gray900: #1F2534\ngray800: #434A5A\ngray700: #6F7285\ngray600: #868C9E\ngray500: #A7ACBD\ngray400: #BDC1CD\ngray300: #CDD0DA\ngray200: #E6E8EE\ngray100: #EFF0F3\ngray50: #F6F6F8`,
+				fonts: FONTS_DEFAULTS,
+				backgrounds: BACKGROUNDS_DEFAULTS,
 				colors: {},
 			};
 		},
@@ -91,5 +113,10 @@
 
 	.main__render {
 		flex: 1;
+	}
+
+	.footer {
+		font-size: 0.8rem;
+		margin-top: 40px;
 	}
 </style>
