@@ -5,16 +5,27 @@
 		</nav>
 		<div class="main">
 			<div class="main__data">
+				<span>Format:</span>
+				<pre class="main__data__format">[COLOR NAME]: [#HEX]</pre>
+
 				<label class="main__data__font__label" for="main__data__font">Fonts</label>
-				<textarea v-model="fonts" name="main__data__font" id="" cols="30" rows="10"> </textarea>
+				<textarea v-model="fonts" name="main__data__font" class="main__data__input" cols="30" rows="10">
+				</textarea>
 
 				<label class="main__data__background__label" for="main__data__background">Backgrounds</label>
-				<textarea v-model="backgrounds" name="main__data__background" id="" cols="30" rows="10"> </textarea>
+				<textarea
+					v-model="backgrounds"
+					name="main__data__background"
+					class="main__data__input"
+					cols="30"
+					rows="10"
+				>
+				</textarea>
 
-				<button @click="renderColors">Rerender matrix</button>
+				<button class="main__data__confirm" @click="renderColors">Rerender matrix</button>
 
 				<div role="footer" class="footer">
-					<p>
+					<p class="caption">
 						Created by <a href="https://github.com/adamkarminski" target="_blank">Adam Karmiński</a> from
 						<a href="https://bethink.tech" target="_blank">Bethink</a>
 					</p>
@@ -62,13 +73,19 @@
 				};
 			},
 			inputToArrayOfObjects(input) {
-				return input.split('\n').map((color) => {
-					const attributes = color.split(':');
-					return {
-						name: attributes[0].trim(),
-						value: attributes[1].trim().replace(/\;/g, ''),
-					};
-				});
+				return input
+					.split('\n')
+					.filter((color) => {
+						return color.indexOf(':') > -1;
+					})
+					.map((color) => {
+						const attributes = color.replace(/\;/g, '').split(':');
+
+						return {
+							name: attributes[0].trim(),
+							value: attributes[1].trim(),
+						};
+					});
 			},
 		},
 		mounted() {
@@ -83,6 +100,7 @@
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 		color: #2c3e50;
+		padding: 0 24px;
 	}
 
 	label {
@@ -111,12 +129,39 @@
 		max-width: 300px;
 	}
 
+	.main__data__format {
+		margin-top: 0;
+		margin-bottom: 24px;
+	}
+
+	.main__data__confirm {
+		border: 0;
+		border-radius: 100px;
+		background-color: #2c3e50;
+		color: #fff;
+		cursor: pointer;
+		display: block;
+		font-size: 1rem;
+		font-weight: bold;
+		padding: 12px 20px;
+		transition: background-color 0.2s;
+		width: 100%;
+	}
+
+	.main__data__confirm:hover {
+		background-color: #6d7884;
+	}
+
 	.main__render {
 		flex: 1;
+		padding: 0 24px;
 	}
 
 	.footer {
-		font-size: 0.8rem;
 		margin-top: 40px;
+	}
+
+	.caption {
+		font-size: 0.8rem;
 	}
 </style>
